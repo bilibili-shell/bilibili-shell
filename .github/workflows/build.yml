@@ -14,10 +14,18 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
+        rust: [stable, nightly]
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install latest nightly
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: ${{ matrix.rust }}
+        override: true
+        components: rustfmt, clippy
     - name: Build
       run: cargo build --verbose
+      
