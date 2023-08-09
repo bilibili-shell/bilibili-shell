@@ -14,18 +14,19 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        rust: [stable, nightly]
+        rust: [nightly, beta, stable, stable 18 months ago]
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install latest nightly
-      uses: actions-rs/toolchain@v1
+      name: Checkout Repo
+
+    - uses: dtolnay/rust-toolchain@stable
+      name: Install Rust ToolChain
       with:
         toolchain: ${{ matrix.rust }}
-        override: true
-        components: rustfmt, clippy
+
     - name: Build
       run: cargo build --verbose
-      
+
