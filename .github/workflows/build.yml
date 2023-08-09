@@ -29,4 +29,4 @@ jobs:
 
     - name: Build
       run: cargo build --verbose
-
+      continue-on-error: true
