@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        rust: [nightly, beta, stable, stable minus 8 releases]
+        rust: [nightly, beta, stable, stable minus 3 releases]
 
     runs-on: ${{ matrix.os }}
 
