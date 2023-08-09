@@ -20,6 +20,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+
     - uses: actions/checkout@v3
       name: Checkout Repo
 
@@ -27,6 +28,8 @@ jobs:
       name: Install Rust ToolChain
       with:
         toolchain: ${{ matrix.rust }}
+
+    - uses: Swatinem/rust-cache@v2
 
     - name: Build
       run: cargo build --verbose
